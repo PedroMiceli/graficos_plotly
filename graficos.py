@@ -1,5 +1,6 @@
 import plotly.graph_objects as go
 import plotly.express as px
+import os
 
 def gerar_radar(dataframe, nome):
     categorias = dataframe[0].columns.values
@@ -21,8 +22,10 @@ def gerar_radar(dataframe, nome):
         ))
         conta += 1
 
+
     fig.update_layout(
         template= 'xgridoff',
+        title={'text': f'{nome}'},
         polar=dict(
             radialaxis_showline= True,
             angularaxis_tickfont=dict(size=16),
@@ -34,6 +37,7 @@ def gerar_radar(dataframe, nome):
                             range=[0, 4])),
         showlegend=True,
     )
+
 
     with open('templates/graficos.html', 'a') as f:
         f.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))

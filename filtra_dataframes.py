@@ -53,8 +53,37 @@ def separa_dataframes(df):
 
 id= 5
 
+#---------------Dataframes para Radares-----------------
+relatorio1 = separa_dataframes(separa_em_topicos().conceitos_filogeneticos(geradf(), id))
+relatorio2 = separa_dataframes(separa_em_topicos().coordenacao_oculopedal_oculomanual(geradf(), id))
+relatorio3 = separa_dataframes(separa_em_topicos().extensibilidade_dos_membros(geradf(), id))
+relatorio4 = separa_dataframes(separa_em_topicos().equilibrio_postural(geradf(), id))
 
-relatorio1 = separa_dataframes(separa_em_topicos().coordenacao_oculopedal_oculomanual(geradf(), id))
-relatorio2 = separa_dataframes(separa_em_topicos().conceitos_filogeneticos(geradf(), id))
-gerar_radar(relatorio1, 'Coordenacao')
-gerar_radar(relatorio2, 'filo')
+#-------------Dataframes para Barras--------------------
+
+
+os.remove('templates/graficos.html')
+f = open('templates/Graficos_arquivo_descartavel.html', 'w')
+graficos = """<html>
+    <head>
+    <title>Graficos</title>
+    </head>
+    <body>
+    <h2>Bem vindo aos Graficos Opentech</h2>
+
+    <p>Default code has been loaded into the Editor.</p>
+
+    </body>
+    </html>
+    """
+f.write(f'templates/{graficos}')
+f.close()
+
+
+
+
+gerar_radar(relatorio1, 'Conceitos Filogenéticos')
+gerar_radar(relatorio2, 'Coordenacão Óculopedal/Óculomanual')
+
+gerar_radar(relatorio3, 'Extensibilidade dos Membros')
+gerar_radar(relatorio4, 'Equilíbrio Postural')

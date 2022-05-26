@@ -35,7 +35,7 @@ def gerar_radar(dataframe, nome):
         showlegend=True,
     )
 
-    with open('p_graph.html', 'a') as f:
+    with open('templates/graficos.html', 'a') as f:
         f.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
 
 
